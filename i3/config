@@ -146,6 +146,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+bindsym $mod+c move absolute position center
 
 bindsym $mod+r mode "resize"
 
@@ -178,7 +179,7 @@ smart_borders on
 
 new_window 1pixel
 for_window [class=".*"] border pixel 2
-
+exec compton --config /home/akhil/compton.conf -b
 bindsym $mod+Escape exec i3lock -i /home/akhil/Downloads/465311.png
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -i /home/akhil/Downloads/465311.png'
 bindsym $mod+b exec /home/akhil/.config/lemonbar/clock.sh
