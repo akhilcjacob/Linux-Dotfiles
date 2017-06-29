@@ -1,2 +1,2 @@
-# dotfiles
-Arch linux setup files
+# Dotfiles
+Arch linux setup files - config files, etc.
