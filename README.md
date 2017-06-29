@@ -4,7 +4,10 @@ Arch linux minimal setup files - config files, etc.
 Used:
 <br>
 * i3-gaps wm
- 
+* i3lock
+* rofi
+* lemonbar
+
 ## Screen shots ##
 
 #### Lock Screen ####
