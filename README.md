@@ -1,7 +1,7 @@
 # Dotfiles 
 Arch linux minimal setup files - config files, etc.
 Used:
-..*i3-gaps wm
+..* i3-gaps wm
  
 ## Screen shots ##
 
