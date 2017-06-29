@@ -21,3 +21,6 @@ Used:
 
 #### Fake Busy ####
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-31-45.png)
+
+#### Desktop Background ####
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/465311.jpg)
