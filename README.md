@@ -1,5 +1,8 @@
-# Dotfiles
-Arch linux setup files - config files, etc.
+# Dotfiles 
+Arch linux minimal setup files - config files, etc.
+Used:
+..i3-gaps wm
+ 
 ## Screen shots ##
 
 #### Lock Screen ####
@@ -8,6 +11,7 @@ Arch linux setup files - config files, etc.
 #### Home Screen ####
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-20-06.png)
 
-#### Lock Screen ####
+#### Rofi ####
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-21-28.png)
+
 
