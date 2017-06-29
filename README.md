@@ -3,7 +3,7 @@ Arch linux minimal setup files - config files, etc.
 <br>
 Used:
 <br>
-⋅⋅* Unordered sub-list.  i3-gaps wm
+* i3-gaps wm
  
 ## Screen shots ##
 
