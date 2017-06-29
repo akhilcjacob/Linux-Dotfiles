@@ -8,6 +8,23 @@ Used:
 * rofi
 * lemonbar
 
+## File Structure ##
+├── compton.conf
+├── dotfiles
+│   ├── 465311.jpg
+│   ├── compton.conf
+│   ├── i3
+│   │   └── config
+│   ├── lemonbar
+│   │   └── clock.sh
+│   ├── README.md
+│   ├── rofi
+│   │   └── config
+│   ├── Screenshot from 2017-06-28 20-53-37.png
+│   ├── Screenshot from 2017-06-28 21-20-06.png
+│   ├── Screenshot from 2017-06-28 21-21-28.png
+│   └── Screenshot from 2017-06-28 21-31-45.png
+
 ## Screen shots ##
 
 #### Lock Screen ####
