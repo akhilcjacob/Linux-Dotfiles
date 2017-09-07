@@ -30,7 +30,10 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec pantheon-terminal
+bindsym $mod+Shift+Return exec pantheon-terminal
+
+#start chrome
+bindsym $mod++Return exec chromium
 
 # kill focused window
 bindsym $mod+q kill
@@ -191,3 +194,6 @@ bindsym $mod+F7 exec --no-startup-id  i3lock -i /home/akhil/Pictures/desktop_bac
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -i /home/akhil/Pictures/desktop_background.png'
 bindsym $mod+b exec --no-startup-id /home/akhil/.config/lemonbar/clock.sh
 bindsym $mod+Shift+b exec --no-startup-id pkill lemonbar
+exec xrandr --output  eDP1 --scale 0.6x0.6 
+exec restart
+
