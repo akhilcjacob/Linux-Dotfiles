@@ -20,24 +20,18 @@ Used:
 │   ├── README.md <br>
 │   ├── rofi <br>
 │   │   └── config <br>
-│   ├── Screenshot from 2017-06-28 20-53-37.png <br>
-│   ├── Screenshot from 2017-06-28 21-20-06.png <br>
-│   ├── Screenshot from 2017-06-28 21-21-28.png <br>
-│   └── Screenshot from 2017-06-28 21-31-45.png <br>
 
 ## Screen shots ##
 
 #### Lock Screen ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2020-53-37.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/lockscreen.png)
 
 #### Home Screen ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-20-06.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/only_terminal.png)
 
 #### Rofi ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-21-28.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/rofi.png)
 
 #### Fake Busy ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/Screenshot%20from%202017-06-28%2021-31-45.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/terminal_chrome.png)
 
-#### Desktop Background ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/465311.jpg)
