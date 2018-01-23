@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec pantheon-terminal
+bindsym $mod+Shift+Return exec konsole
 
 #start chrome
 bindsym $mod++Return exec chromium
@@ -188,12 +188,11 @@ bindsym $mod+Shift+tab workspace prev
 
 new_window 1pixel
 for_window [class=".*"] border pixel 2
-exec compton --config /home/akhil/compton.conf -b
-bindsym $mod+Escape exec --no-startup-id  i3lock -i /home/akhil/Pictures/desktop_background.png
-bindsym $mod+F7 exec --no-startup-id  i3lock -i /home/akhil/Pictures/desktop_background.png && systemctl suspend
-exec --no-startup-id xautolock -time 10 -locker 'i3lock -i /home/akhil/Pictures/desktop_background.png'
+exec -compton --config /home/akhil/compton.conf -b
+bindsym $mod+Escape exec --no-startup-id  betterlockscreen --lock
+bindsym $mod+F7 exec --no-startup-id  betterlockscreen --lock && systemctl suspend
+exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock'
 bindsym $mod+b exec --no-startup-id /home/akhil/.config/lemonbar/clock.sh
 bindsym $mod+Shift+b exec --no-startup-id pkill lemonbar
-exec xrandr --output  eDP1 --scale 0.6x0.6 
-exec restart
-
+exec  --no-startup-id xrandr --output  eDP1 --scale 0.6x0.6 
+exec  --no-startup-id restart
