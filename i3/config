@@ -125,7 +125,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -166,15 +166,29 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # Touchpad controls
 bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
 
-bar{
-
-}
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+bar {
+    status_command conky -c $HOME/.config/i3/conkyrc
+    mode dock
+    position bottom
+    font pango:open sans 7.8
+    strip_workspace_numbers yes
+colors {
+    background #1b3359
+    statusline #FFFFFF
+    separator #1b3359
+
+    focused_workspace #FFFFFF #1b3359 #FFFFFF
+    active_workspace  #1b3359 #1b3359 #4FC0E8
+    inactive_workspace #1b3359 #1b3359 #C1D1E0
+    urgent_workspace  #af0a36 #1b3359 #C1D1E0
+  }
+}
 
 # Set wallpaper (need to install feh)
 exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
@@ -188,11 +202,14 @@ bindsym $mod+Shift+tab workspace prev
 
 new_window 1pixel
 for_window [class=".*"] border pixel 2
-exec -compton --config /home/akhil/compton.conf -b
-bindsym $mod+Escape exec --no-startup-id  betterlockscreen --lock
-bindsym $mod+F7 exec --no-startup-id  betterlockscreen --lock && systemctl suspend
+exec compton --config /home/akhil/.config/i3/compton.conf -b
+bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
+bindsym $mod+F7 exec --no-startup-id betterlockscreen --lock && systemctl suspend
+bindsym $mod+Shift+F7 exec --no-startup-id  betterlockscreen --lock && systemctl hibernate
+
 exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock'
 bindsym $mod+b exec --no-startup-id /home/akhil/.config/lemonbar/clock.sh
 bindsym $mod+Shift+b exec --no-startup-id pkill lemonbar
-exec  --no-startup-id xrandr --output  eDP1 --scale 0.6x0.6 
-exec  --no-startup-id restart
+exec --no-startup-id xrandr --output eDP1 --scale 0.6x0.6
+exec --no-startup-id redshift-gtk &
+exec --no-startup-id restart
