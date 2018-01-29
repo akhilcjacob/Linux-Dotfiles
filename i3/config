@@ -179,14 +179,14 @@ bar {
     font pango:open sans 7.8
     strip_workspace_numbers yes
 colors {
-    background #1b3359
+    background #303449
     statusline #FFFFFF
-    separator #1b3359
+    separator ##303449
 
-    focused_workspace #FFFFFF #1b3359 #FFFFFF
-    active_workspace  #1b3359 #1b3359 #4FC0E8
-    inactive_workspace #1b3359 #1b3359 #C1D1E0
-    urgent_workspace  #af0a36 #1b3359 #C1D1E0
+    focused_workspace #303449 #303449 #FFFFFF
+    active_workspace  #303449 #303449 #4FC0E8
+    inactive_workspace #303449 #303449 #777777
+    urgent_workspace  #af0a36 #303449 #C1D1E0
   }
 }
 
@@ -201,7 +201,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Shift+tab workspace prev
 
 new_window 1pixel
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 0
 exec compton --config /home/akhil/.config/i3/compton.conf -b
 bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
 bindsym $mod+F7 exec --no-startup-id betterlockscreen --lock && systemctl suspend
