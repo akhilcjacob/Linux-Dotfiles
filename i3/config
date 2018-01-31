@@ -32,11 +32,20 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Shift+Return exec konsole
 
-#start chrome
-bindsym $mod++Return exec chromium
+# Make the currently focused window a scratchpad
+#bindsym $mod+minus move scratchpad
+
+# Show the first scratchpad window
+#bindsym $mod+n scratchpad show, resize set 800 600
+
+bindsym $mod+Return exec google-chrome-stable
+#for_window [instance="__scratchpad"] move scratchpad
+
+bindsym $mod+t exec /home/akhil/.config/i3/i3notefocus.sh laverna 
+
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -84,10 +93,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -179,14 +188,14 @@ bar {
     font pango:open sans 7.8
     strip_workspace_numbers yes
 colors {
-    background #303449
+    background #14243d
     statusline #FFFFFF
-    separator ##303449
+    separator #14243d
 
-    focused_workspace #303449 #303449 #FFFFFF
-    active_workspace  #303449 #303449 #4FC0E8
-    inactive_workspace #303449 #303449 #777777
-    urgent_workspace  #af0a36 #303449 #C1D1E0
+    focused_workspace #14243d #14243d #FFFFFF
+    active_workspace  #14243d #14243d #4FC0E8
+    inactive_workspace #14243d #14243d #777777
+    urgent_workspace  #af0a36 #14243d #C1D1E0
   }
 }
 
@@ -211,5 +220,5 @@ exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock'
 bindsym $mod+b exec --no-startup-id /home/akhil/.config/lemonbar/clock.sh
 bindsym $mod+Shift+b exec --no-startup-id pkill lemonbar
 exec --no-startup-id xrandr --output eDP1 --scale 0.6x0.6
-exec --no-startup-id redshift-gtk &
+exec --no-startup-id redshift&
 exec --no-startup-id restart
