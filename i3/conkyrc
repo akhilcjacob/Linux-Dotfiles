@@ -3,7 +3,11 @@ out_to_x no
 out_to_console yes
 update_interval 1
 total_run_times 0
+<<<<<<< HEAD
 use_spacer left
+=======
+use_spacer right
+>>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
 
 
 TEXT
@@ -14,4 +18,11 @@ ${if_mpd_playing}${mpd_artist}   ${mpd_title}${endif}          \
   $memperc%          \
   ${time %a %b %d}          \
   ${time %I:%M %P}          \
+<<<<<<< HEAD
   ${battery_percent BAT0}% ${exec acpi -b | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\2/'}
+=======
+  ${battery_percent BAT0}% ${exec acpi -b | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\2/'}          
+
+
+
+>>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
