@@ -1,5 +1,10 @@
 # i3 config file (v4)
 
+#################################################
+###   Created and maintained by Akhil Jacob   ###
+###   	https://github.com/akhilcjacob        ###
+#################################################
+
 # Setting mod to ALT (left & right) key
 set $mod Mod1
 
