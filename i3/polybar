@@ -8,8 +8,8 @@
 ;=====================================================
 
 [colors]
-background = #ee2f343f
-background-alt = #f72f343f
+background = #CC2f343f
+background-alt = #cc2f343f
 foreground = #f3f4f5
 foreground-alt = #f3f4f5
 foreground-dim = #676e7d
@@ -53,9 +53,9 @@ font-2 = Termsynu:size=8;0
 font-3 = Siji:pixelsize=10;1
 font-4 = FontAwesome:size=10;0
 
-modules-left = bspwm i3 
+modules-left = bspwm i3
 modules-center = xwindow
-modules-right = wlan s xbacklight s mpd myVolume s cpu s memory s battery s date s powermenu
+modules-right = wlan s xbacklight s myVolume s cpu s memory s battery s date s powermenu
 ;systemRoot systemHome s
 
 tray-position = right
@@ -165,53 +165,12 @@ format-discharging-padding = ${module/theme.format-padding}
 format-mounted-foreground = ${self.format-mounted-underline}
 format-unmounted-foreground = ${self.format-unmounted-underline}
 
-[module/mpd]
-type = internal/mpd
-
-inherit = module/theme
-
-format-online = <toggle>   <label-song>    [ <label-time>  ]
-
-label-song = %title% - %artist%
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-icon-prev = 
-icon-seekb = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-seekf = 
-
-icon-random = 
-icon-repeat = 
-
-;toggle-on-foreground = ${colors.primary}
-;toggle-off-foreground = #66
-
-;format-online-prefix = " "
-format-online-underline = #20dfdf
-format-online-background = #0d5959
-format-online-padding = 4
 
 [module/myBattery]
 interval=1
 type = custom/script
 exec = /usr/lib/i3blocks/battery
 format-underline = #ffb52a
-
-[module/mySpotify]
-inherit = module/theme
-interval = 1
-type = custom/script
-exec = /usr/lib/i3blocks/mediaplayer
-click-left = i3-msg workspace number 9
-label = %output:0:30:...%
-format-prefix = " "
-format-underline = #20dfdf
-format-foreground = ${colors.foreground}
-format-background = #0d5959
 
 [module/myVolume]
 inherit = module/theme
@@ -220,10 +179,19 @@ type = custom/script
 exec = /usr/lib/i3blocks/volume
 scroll-up = pactl set-sink-volume 1 +1%
 scroll-down = pactl set-sink-volume 1 -1%
-click-left = urxvt -name float -e ncmpcpp &
-click-right = pavucontrol &
+click-left = pavucontrol &
+click-right =  urxvt -name float -e ncmpcpp &
+label-muted = 🔇 muted
+label-muted-foreground = #66
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
 format-prefix = "  "
-format-underline = #20dfdf
+
+format-underline =  ${colors.high}
+format-foreground =  #fff
 
 
 [module/xbacksdflight]
@@ -261,8 +229,9 @@ ramp-1-foreground = #999
 ramp-2 = 
 ramp-2-foreground = #fff
 interactive = true
-format-underline = #CCCCCC
-label =  "%percentage%%  " 
+label =  "%percentage%%  "
+format-underline =  ${colors.high}
+format-foreground =  #fff
 
 [module/cpu]
 inherit = module/theme
@@ -270,7 +239,9 @@ type = internal/cpu
 interval = 1
 format = <label> <ramp-coreload>
 format-prefix = " "
-format-underline = #CCCCCC
+format-underline =  ${colors.high}
+format-foreground =  #fff
+
 label =  %percentage%%
 
 ramp-coreload-0 = ▁
@@ -295,28 +266,17 @@ ramp-coreload-7-foreground = #ff5555
 type = internal/memory
 format = <label>
 format-prefix = "  "
-format-underline = #ffffff
+format-underline = ${colors.high}
 label = %percentage_used%%
 
 [module/wireless-network]
-type = internal/network
-interface = net1
-interval = 2.0
-ping-interval = 10
-
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
-label-disconnected =    not connected
-label-disconnected-foreground = #66
-
-[module/wlan]
 type = internal/network
 interface = wlp7s0
 interval = 2.0
 ping-interval = 10
 
 format-connected = <ramp-signal> <label-connected>
-format-underline = #ffffff
+format-underline = ${colors.high}
 label-connected = %essid%
 label-disconnected =    not connected
 label-disconnected-foreground = #66
@@ -327,17 +287,38 @@ ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
 
+[module/wlan]
+type = internal/network
+interface = wlp7s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+label-disconnected = %{F#666}%{F#ccfafafa} not connected
+label-disconnected-foreground = #66
+ramp-signal-0 = 
+ramp-signal-0-foreground = #222
+ramp-signal-1 = 
+ramp-signal-1-foreground = #444
+ramp-signal-2 = 
+ramp-signal-foreground = #666
+ramp-signal-3 = 
+ramp-signal-3-foreground = #888
+ramp-signal-4 = 
+ramp-signal-4-foreground = #fff
+
 
 [module/date]
 inherit = module/theme
 type = internal/date
 interval = 1
 
-time-alt = "%a - %d.%m.%Y - %H:%M:%S"
-time = "%a | %d.%m.%Y | %I:%M %p"
+time-alt = "%a | %d.%m.%Y | %I:%M %p"
+time = "%I:%M %p"
 
 format-prefix = " "
-format-underline = ${colors.foreground}
+format-underline =  ${colors.high}
+format-foreground =  #fff
 
 label = %date% %time%
 
@@ -388,7 +369,7 @@ format-discharging-underline = ${self.format-charging-underline}
 label-charging-foreground = ${self.format-charging-underline}
 label-discharging-foreground = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
@@ -432,7 +413,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/menu
 
 label-open = " "
-label-open-foreground = ${colors.primary}
+label-open-foreground= ${colors.high}
 label-close =  cancel
 label-close-foreground = ${colors.primary}
 label-separator = |

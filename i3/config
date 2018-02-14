@@ -1,11 +1,4 @@
 # i3 config file (v4)
-<<<<<<< HEAD
-=======
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
-set $mod Mod1
->>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
 
 # Setting mod to ALT (left & right) key
 set $mod Mod1
@@ -20,7 +13,6 @@ floating_modifier $mod
 bindsym $mod+Shift+Return exec konsole
 
 # Make the currently focused window a scratchpad
-<<<<<<< HEAD
 bindsym $mod+minus move scratchpad
 
 # Show the first scratchpad window
@@ -31,18 +23,6 @@ bindsym $mod+Return exec google-chrome-stable
 
 # Launch script => script launches app and if already opened refoucses to it
 bindsym $mod+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
-=======
-#bindsym $mod+minus move scratchpad
-
-# Show the first scratchpad window
-#bindsym $mod+n scratchpad show, resize set 800 600
-
-bindsym $mod+Return exec google-chrome-stable
-#for_window [instance="__scratchpad"] move scratchpad
-
-bindsym $mod+t exec /home/akhil/.config/i3/i3notefocus.sh laverna 
-
->>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -192,32 +172,9 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-<<<<<<< HEAD
 # i3-gaps : window gaps
-=======
-bar {
-    status_command conky -c $HOME/.config/i3/conkyrc
-    mode dock
-    position bottom
-    font pango:open sans 7.8
-    strip_workspace_numbers yes
-colors {
-    background #14243d
-    statusline #FFFFFF
-    separator #14243d
-
-    focused_workspace #14243d #14243d #FFFFFF
-    active_workspace  #14243d #14243d #4FC0E8
-    inactive_workspace #14243d #14243d #777777
-    urgent_workspace  #af0a36 #14243d #C1D1E0
-  }
-}
-
-# Set wallpaper (need to install feh)
-exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
->>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
-gaps inner 9
-gaps outer 13
+gaps inner 8
+gaps outer 5
 
 # Gaps & borders only when we have more than 1 window
 smart_borders on
@@ -248,7 +205,6 @@ exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
 # Remove the ugly title bars and borders
 new_window 1pixel
 for_window [class=".*"] border pixel 0
-<<<<<<< HEAD
 
 # Use a fancy color scheme
 exec compton --config /home/akhil/.config/i3/compton.conf -b
@@ -271,16 +227,4 @@ exec --no-startup-id redshift &
 exec_always --no-startup-id killall polybar; polybar main -c "/home/akhil/.config/i3/polybar"
 
 #restart i3 in place to kick off new settings
-=======
-exec compton --config /home/akhil/.config/i3/compton.conf -b
-bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
-bindsym $mod+F7 exec --no-startup-id betterlockscreen --lock && systemctl suspend
-bindsym $mod+Shift+F7 exec --no-startup-id  betterlockscreen --lock && systemctl hibernate
-
-exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock'
-bindsym $mod+b exec --no-startup-id /home/akhil/.config/lemonbar/clock.sh
-bindsym $mod+Shift+b exec --no-startup-id pkill lemonbar
-exec --no-startup-id xrandr --output eDP1 --scale 0.6x0.6
-exec --no-startup-id redshift&
->>>>>>> 105d8dc089ef49a3ee45f1d19472f8a9c5729e9e
 exec --no-startup-id restart
