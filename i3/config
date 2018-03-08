@@ -1,4 +1,3 @@
-
 # i3 config file (v4)
 
 # Setting mod to ALT (left & right) key
@@ -22,6 +21,7 @@ bindsym $mod+n scratchpad show
 
 # Show open chrome
 bindsym $mod+Return exec --no-startup-id google-chrome-stable
+bindsym $mod+q exec --no-startup-id firefox
 
 # Brwoser pop-up as floating
 for_window [window_role="pop-up"] floating enable
@@ -34,18 +34,21 @@ for_window [class="Pantheon-files"] resize set 900 600
 # Force float certain applications (ie. photo viewer)
 for_window [class="Pantheon-photos"] floating enable
 for_window [class="Pantheon-photos"] resize set 900 600
-for_window [class="tilda"] floating enable
-
+for_window [class="guake"] floating enable
+for_window [class="ghostwriter"] floating enable
+for_window [class="ghostwriter"] resize set 1000 800
 
 # Launch script => script launches app and if already opened refoucses to it
 bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
-bindsym $mod+t exec tilda
+bindsym $mod+g exec ghostwriter 
+# Show the floating terminal
+bindsym $mod+t exec guake
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun -width 2560 -padding 770 -line-margin 10 -auto-select -opacity 0
+bindsym $mod+d exec rofi -show drun -width 2560 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
 
 # change focus
 bindsym $mod+j focus left
@@ -233,15 +236,15 @@ exec compton --config /home/akhil/.config/i3/compton.conf -b
 bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
 # suspend then lock upon un-suspend
 bindsym $mod+F7 exec systemctl suspend && betterlockscreen --lock 
+bindsym $mod+Shift+F7 exec systemctl suspend
 
-# Auto lock after 10 minutes of inactivity
-exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock'
+# Auto lock after 10 minutes of inactivity and suspend after 15
+exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock' &
+exec --no-startup-id xautolock -time 15 -locker "systemctl suspend" &
 
 # Force rescale window for 4k display
 exec --no-startup-id xrandr --output eDP1 --scale 0.6x0.6
 
-# Automatically add blueshift
-exec --no-startup-id redshift &
 
 # Startup the polybar
 exec_always --no-startup-id killall polybar; polybar main -c "/home/akhil/.config/i3/polybar"
@@ -251,9 +254,13 @@ exec --no-startup-id dunst -conf /home/akhil/.config/dunstrc1
 
 # Add input gestures 
 exec --no-startup-id libinput-gestures-setup start
-# tilda
-exec --no-startup-id tilda
+# guake dropw down terminal
+exec --no-startup-id guake
+
+# Turn on tap to click
+exec xinput set-prop 12 285 1
 
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart
+
 
