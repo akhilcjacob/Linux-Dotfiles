@@ -1,0 +1,17 @@
+background no
+out_to_x no
+out_to_console yes
+update_interval 1
+total_run_times 0
+use_spacer left
+
+
+TEXT
+${if_mpd_playing}${mpd_artist}   ${mpd_title}${endif}          \
+  ${wireless_essid wlp7s0}          \
+  ${exec amixer get Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p'| uniq}          \
+  ${cpu cpu}%          \
+  $memperc%          \
+  ${time %a %b %d}          \
+  ${time %I:%M %P}          \
+  ${battery_percent BAT0}% ${exec acpi -b | awk "{print $1}" | sed 's/\([^:]*\): \([^,]*\), \([0-9]*\)%.*/\2/'}
