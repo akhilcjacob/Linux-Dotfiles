@@ -24,14 +24,14 @@ Used:
 ## Screen shots ##
 
 #### Lock Screen ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/lockscreen.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/lockscreen.png)
 
 #### Home Screen ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/only_terminal.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/only_terminal.png)
 
 #### Rofi ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/rofi.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/rofi.png)
 
 #### Fake Busy ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/terminal_chrome.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/terminal_chrome.png)
 

@@ -1,9 +1,10 @@
-xrandr --output  eDP1 --scale 0.6x0.6
+xrandr --output eDP1 --scale 1x1
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=/home/akhil/flutter/bin:$PATH
 export PATH=/home/akhil/.gem/ruby/2.5.0/bin:$PATH
 export PATH=/usr/bin/node:$PATH
+export JAVA_HOME=/usr/lib/jvm/default:$PATH
 export TERM=konsole
 
 ### Set/unset ZSH options
@@ -74,7 +75,16 @@ unsetopt ALL_EXPORT
 ### Set alias
 #############
 alias ll='ls -al'
+alias pkill='pkill -ec'
 alias ls='ls --color=auto '
+alias diff='diff --color=auto '
+alias firefox='env GTK_THEME=Adwaita:light firefox'
+alias xclip="xclip -selection c"
+
+# cd jump (Move up several directories) 
+# usage 
+# cdj #
+alias 'cdj'='cd_up'
 
 ### Bind keys
 #############
@@ -185,6 +195,7 @@ function precmd() {
 ##################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-notify/notify.plugin.zsh
 ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
  
 cd ~
@@ -196,5 +207,5 @@ export PATH="$PATH:$HOME/.rvm/bin"
 bindkey "\e[3~" delete-char
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-bindkey -M main -M viins -M vicmd   '^[[33~'    backward-kill-word
+bindkey -M main -M viins -M vicmd   '^[[33~' backward-kill-word
 bindkey '^ ' autosuggest-accept

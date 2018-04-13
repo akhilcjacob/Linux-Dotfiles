@@ -8,8 +8,8 @@
 ;=====================================================
 
 [colors]
-background = #2F343F
-background-alt = #2F343F
+background = #383c4FF
+background-alt =#383c4FF
 ;background-alt = #772f343f
 foreground = #f3f4f5
 foreground-alt = #f3f4f5
@@ -59,10 +59,10 @@ modules-center = s s s s s s xwindow
 modules-right = wlan s xbacklight s myVolume s cpu s memory s battery s date s s 
 powermenu  s s  systemRoot systemHome s
 
-;tray-position = right
-;tray-padding = 4
+tray-position = right
+tray-padding = 4
 ;tray-transparent = true
-;tray-background = ${colors.background}
+tray-background = ${colors.background}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -238,7 +238,7 @@ format-foreground =  #fff
 inherit = module/theme
 type = internal/cpu
 interval = 1
-format = <label> <ramp-coreload>
+format = <label> 
 format-prefix = " "
 format-underline =  ${colors.high}
 format-foreground =  #fff
@@ -441,3 +441,4 @@ menu-2-1-exec = menu-open-0
 [module/s]
 type = custom/text
 content = " "
+
