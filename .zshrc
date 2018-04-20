@@ -1,4 +1,3 @@
-xrandr --output eDP1 --scale 1x1
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=/home/akhil/flutter/bin:$PATH
@@ -84,6 +83,9 @@ alias xclip="xclip -selection c"
 # cd jump (Move up several directories) 
 # usage 
 # cdj #
+function cd_up() {
+  cd $(printf "%0.s../" $(seq 1 $1 ));
+}
 alias 'cdj'='cd_up'
 
 ### Bind keys
@@ -195,7 +197,6 @@ function precmd() {
 ##################
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-notify/notify.plugin.zsh
 ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
  
 cd ~

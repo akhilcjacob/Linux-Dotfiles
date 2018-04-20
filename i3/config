@@ -4,7 +4,7 @@
 set $mod Mod1
 
 # Default font set
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -21,8 +21,7 @@ bindsym $mod+n scratchpad show
 
 # Show open Browsers
 # bindsym $mod+Return exec --no-startup-id google-chrome-stable
-bindsym $mod+Return exec --no-startup-id env GTK_THEME=Adwaita:light firefox-developer-edition
-bindsym $mod+q exec --no-startup-id chromium
+bindsym $mod+Return exec --no-startup-id vivaldi-stable
 
 # Brwoser pop-up as floating
 for_window [window_role="pop-up"] floating enable
@@ -38,6 +37,7 @@ for_window [class="Trello"] floating enable
 for_window [class="Trello"] resize set 1200 800
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="KeeWeb"] floating enable
+for_window [class="KeePassXC"] floating enable
 for_window [class="ghostwriter"] floating enable
 for_window [class="ghostwriter"] resize set 1000 800
 for_window [class="Slack"] floating enable
@@ -46,9 +46,10 @@ for_window [class="Pantheon-photos"] floating enable
 for_window [class="Pantheon-photos"] resize set 900 600
 
 # Launch script => script launches app and if already opened refoucses to it
-bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
+# bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
 bindsym $mod+g exec ghostwriter 
 bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh keeweb 
+bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh keeweb 
 # Show the floating terminal
 bindsym $mod+t exec guake
 
@@ -272,13 +273,9 @@ focus_follows_mouse yes
 
 # Turn on tap to click
 exec xinput set-prop 12 285 1
-for_window [class="plank"] floating enable
-for_window [instance ="plank"] floating enable
 
 #exec --no-startup-id /usr/lib/kdeconnectd 
 exec --no-startup-id dropbox
-
-
 
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart
