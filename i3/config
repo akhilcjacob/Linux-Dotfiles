@@ -4,6 +4,7 @@
 set $mod Mod1
 
 # Default font set
+#font pango:DejaVu Sans Mono 12
 font pango:DejaVu Sans Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -20,8 +21,7 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+n scratchpad show
 
 # Show open Browsers
-# bindsym $mod+Return exec --no-startup-id google-chrome-stable
-bindsym $mod+Return exec --no-startup-id vivaldi-stable
+ bindsym $mod+Return exec --no-startup-id google-chrome-stable
 
 # Brwoser pop-up as floating
 for_window [window_role="pop-up"] floating enable
@@ -47,7 +47,7 @@ for_window [class="Pantheon-photos"] resize set 900 600
 
 # Launch script => script launches app and if already opened refoucses to it
 # bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
-bindsym $mod+g exec ghostwriter 
+bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
 bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh keeweb 
 bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh keeweb 
 # Show the floating terminal
@@ -63,8 +63,8 @@ bindsym $mod+d exec rofi -show drun -height 1000
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+i focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -236,7 +236,9 @@ exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
 
 # Remove the ugly title bars and borders
 new_window 1pixel
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 
 # Use a fancy color scheme
 exec compton --config /home/akhil/.config/i3/compton.conf -b
@@ -244,8 +246,9 @@ exec compton --config /home/akhil/.config/i3/compton.conf -b
 # Launch a nicer version of i3 lock
 bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
 # suspend then lock upon un-suspend
-bindsym $mod+F7 exec systemctl suspend && betterlockscreen --lock 
-bindsym $mod+Shift+F7 exec systemctl pm-suspend-hybrid
+bindsym $mod+F7 exec sleep 1 && pkill -STOP chrome && sleep 1 && systemctl suspend && betterlockscreen --lock  && pkill -CONT chrome
+# systemctl suspend && betterlockscreen --lock 
+
 
 # Auto lock after 10 minutes of inactivity and suspend after 15
 exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock' &
@@ -268,8 +271,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 # Add input gestures 
 exec --no-startup-id libinput-gestures-setup start
 # guake dropw down terminal
-exec --no-startup-id guake && pkill guake && guake
-focus_follows_mouse yes
+exec guake 
 
 # Turn on tap to click
 exec xinput set-prop 12 285 1

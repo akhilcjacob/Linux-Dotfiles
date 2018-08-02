@@ -5,6 +5,7 @@ export PATH=/home/akhil/.gem/ruby/2.5.0/bin:$PATH
 export PATH=/usr/bin/node:$PATH
 export JAVA_HOME=/usr/lib/jvm/default:$PATH
 export TERM=konsole
+export NODE_ENV=development 
 
 ### Set/unset ZSH options
 #########################
