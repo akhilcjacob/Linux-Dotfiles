@@ -8,6 +8,8 @@ read -p "Are you sure? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
+cp .zshrc ~/
+
 echo "Making a plugin directory within the ~/.zsh folder..."
 mkdir ~/.zsh/plugins
 
