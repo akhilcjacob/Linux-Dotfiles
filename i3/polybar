@@ -1,0 +1,443 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = #383c4FF
+background-alt =#383c4FF
+;background-alt = #772f343f
+foreground = #f3f4f5
+foreground-alt = #f3f4f5
+foreground-dim = #676e7d
+primary = #cc2f343f
+secondary = #e60053
+alert = #ff6600
+
+high = #268bd2
+high-alt = #0c2b41
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+margin-left = 100
+[bar/main]
+;monitor = ${env:MONITOR:HDMI1}
+bottom = true
+width = 100%
+height = 20
+offset-x = 0%
+offset-y = 0
+
+;background = ${xrdb:color9}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = #f00
+underline-size = 2
+underline-color = ${colors.high}
+
+spacing = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 1
+
+font-0 = NotoSans-Regular:size=8;0
+font-1 = MaterialIcons:size=10;2
+font-2 = Termsynu:size=8;0
+font-3 = Siji:pixelsize=10;1
+font-4 = FontAwesome:size=10;0
+
+modules-left = bspwm i3 s s
+modules-center = s s s s s s xwindow
+modules-right = wlan s xbacklight s myVolume s cpu s memory s battery s date
+
+tray-position = right
+tray-padding = 8
+;tray-transparent = true
+tray-background = ${colors.background}
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-background = ${colors.background-alt}
+label-padding = 15
+format-underline = ${colors.high}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-underline = ${colors.secondary}
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/bspwm]
+type = internal/bspwm
+ws-icon-default = x
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.high}
+label-focused-padding = 4
+
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground-dim}
+label-unfocused-padding = 4
+
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 4
+
+label-visible = %index%
+label-visible-foreground = ${module/bspwm.label-empty-padding}
+label-visible-padding = ${module/bspwm.label-empty-padding}
+
+[module/theme]
+format-background = ${colors.background}
+format-padding = 2
+format-foreground = ${self.format-underline}
+
+format-connected-background = ${module/theme.format-background}
+format-unconnected-background = ${module/theme.format-background}
+format-mounted-background = ${module/theme.format-background}
+format-unmounted-background = ${module/theme.format-background}
+format-charging-background = ${module/theme.format-background}
+format-discharging-background = ${module/theme.format-background}
+
+format-connected-padding = ${module/theme.format-padding}
+format-unconnected-padding = ${module/theme.format-padding}
+format-mounted-padding = ${module/theme.format-padding}
+format-unmounted-padding = ${module/theme.format-padding}
+format-charging-padding = ${module/theme.format-padding}
+format-discharging-padding = ${module/theme.format-padding}
+
+format-mounted-foreground = ${self.format-mounted-underline}
+format-unmounted-foreground = ${self.format-unmounted-underline}
+
+
+[module/myBattery]
+interval=1
+type = custom/script
+exec = /usr/lib/i3blocks/battery
+format-underline = #ffb52a
+
+[module/myVolume]
+inherit = module/theme
+interval = 0.5
+type = custom/script
+exec = /usr/lib/i3blocks/volume
+scroll-up = pactl set-sink-volume 1 +1%
+scroll-down = pactl set-sink-volume 1 -1%
+click-left = pavucontrol &
+click-right =  urxvt -name float -e ncmpcpp &
+label-muted = 🔇 muted
+label-muted-foreground = #66
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+format-prefix = "  "
+
+format-underline =  ${colors.high}
+format-foreground =  #fff
+
+
+[module/xbacksdflight]
+type = internal/xbacklight
+output = eDP-1
+format = <ramp> <bar>
+
+ramp-0 = 
+ramp-0-foreground = #666
+ramp-1 = 
+ramp-1-foreground = #999
+ramp-2 = 
+ramp-2-foreground = #fff
+
+bar-width = 12
+bar-indicator = |
+bar-indicator-font = 6
+bar-indicator-foreground = #bbffffff
+bar-fill = ─
+bar-fill-font = 6
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 6
+bar-empty-foreground = #44
+
+
+[module/xbacklight]
+type = internal/backlight
+card = intel_backlight
+format = <ramp> <label>
+ramp-0 = 
+ramp-0-foreground = #666
+ramp-1 = 
+ramp-1-foreground = #999
+ramp-2 = 
+ramp-2-foreground = #fff
+interactive = true
+label =  "%percentage%%  "
+format-underline =  ${colors.high}
+format-foreground =  #fff
+
+[module/cpu]
+inherit = module/theme
+type = internal/cpu
+interval = 1
+format = <label> 
+format-prefix = " "
+format-underline =  ${colors.high}
+format-foreground =  #fff
+
+label =  %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-0-foreground = #aaff77
+ramp-coreload-1 = ▂
+ramp-coreload-1-foreground = #aaff77
+ramp-coreload-2 = ▃
+ramp-coreload-2-foreground = #aaff77
+ramp-coreload-3 = ▄
+ramp-coreload-3-foreground = #aaff77
+ramp-coreload-4 = ▅
+ramp-coreload-4-foreground = #fba922
+ramp-coreload-5 = ▆
+ramp-coreload-5-foreground = #fba922
+ramp-coreload-6 = ▇
+ramp-coreload-6-foreground = #ff5555
+ramp-coreload-7 = █
+ramp-coreload-7-foreground = #ff5555
+
+
+[module/memory]
+type = internal/memory
+format = <label>
+format-prefix = "  "
+format-underline = ${colors.high}
+label = %percentage_used%%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp7s0
+interval = 2.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected>
+format-underline = ${colors.high}
+label = ""
+label-alt-connected = %essid%
+label-disconnected =    not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+[module/wlan]
+type = internal/network
+interface = wlp7s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = 
+label-alt-connected = %essid%
+label-disconnected =    not connected
+label-disconnected-foreground = #66
+ramp-signal-0 = 
+ramp-signal-0-foreground = #222
+ramp-signal-1 = 
+ramp-signal-1-foreground = #444
+ramp-signal-2 = 
+ramp-signal-foreground = #666
+ramp-signal-3 = 
+ramp-signal-3-foreground = #888
+ramp-signal-4 = 
+ramp-signal-4-foreground = #fff
+
+
+[module/date]
+inherit = module/theme
+type = internal/date
+interval = 1
+
+time-alt = "%a | %m.%d.%Y | %I:%M %p"
+time = "%I:%M %p"
+
+format-prefix = " "
+format-underline =  ${colors.high}
+format-foreground =  #fff
+
+label = %date% %time%
+
+[module/volume]
+inherit = module/theme
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #1e3151
+bar-volume-foreground-1 = #1e3151
+bar-volume-foreground-2 = #1e3151
+bar-volume-foreground-3 = #1e3151
+bar-volume-foreground-4 = #1e3151
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery]
+inherit = module/theme
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+label-charging = " %percentage%%"
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #1c964e
+
+label-discharging = "%percentage%%"
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+label-charging-foreground = ${self.format-charging-underline}
+label-discharging-foreground = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${self.format-charging-underline}
+ramp-capacity-0-foreground = ${colors.foreground}
+ramp-capacity-0-background = ${colors.alert}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-foreground = ${self.format-charging-underline}
+animation-charging-framerate = 750
+
+[module/temperature]
+inherit = module/theme
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 65
+
+format = <label>
+format-underline = #d33636
+format-warn = <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+format-warn-foreground = ${colors.foreground}
+format-warn-background = ${colors.alert}
+format-warn-padding = ${self.format-padding}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/powermenu]
+type = custom/menu
+
+label-open = " "
+label-open-foreground= ${colors.high}
+label-close =  cancel
+label-close-foreground = ${colors.primary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+; vim:ft=dosini
+
+[module/s]
+type = custom/text
+content = " "
+
