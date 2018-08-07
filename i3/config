@@ -46,10 +46,10 @@ for_window [class="Pantheon-photos"] floating enable
 for_window [class="Pantheon-photos"] resize set 900 600
 
 # Launch script => script launches app and if already opened refoucses to it
-# bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
-bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh boostnote 
-bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh keeweb 
-bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh keeweb 
+# bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote
+bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh boostnote
+bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh keeweb
+bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh keeweb
 # Show the floating terminal
 bindsym $mod+t exec guake
 
@@ -58,7 +58,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 # bindsym $mod+d exec rofi -show drun -width 2560 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
-bindsym $mod+d exec rofi -show drun -height 1000
+bindsym mod4+d exec rofi -show drun -height 1000
 
 # change focus
 bindsym $mod+j focus left
@@ -164,7 +164,7 @@ mode "resize" {
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-	
+
         # Similar binding except with alt to resize with larger values
 	bindsym $mod+Left resize shrink width 100 px or 100 ppt
         bindsym $mod+Down resize grow height 100 px or 100 ppt
@@ -184,29 +184,29 @@ bindsym $mod+c move absolute position center
 
 # Pulse Audio controls
 #increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 #decrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -6% 
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -6%
 # mute sound
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # Touchpad controls
-bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
+#bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 # i3-gaps : window gaps
-gaps inner 8
-gaps outer 5
+gaps inner 3
+gaps outer 3
 
 # Gaps & borders only when we have more than 1 window
 smart_borders on
@@ -236,79 +236,36 @@ exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
 
 # Remove the ugly title bars and borders
 new_window 1pixel
-for_window [class=".*"] border pixel 3
+for_window [class=".*"] border pixel 2
 client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 
 # Use a fancy color scheme
-exec compton --config /home/akhil/.config/i3/compton.conf -b
+exec compton
 
-# Launch a nicer version of i3 lock
-bindsym $mod+Escape exec --no-startup-id betterlockscreen --lock
-# suspend then lock upon un-suspend
-bindsym $mod+F7 exec sleep 1 && pkill -STOP chrome && sleep 1 && systemctl suspend && betterlockscreen --lock  && pkill -CONT chrome
-# systemctl suspend && betterlockscreen --lock 
-
-
-# Auto lock after 10 minutes of inactivity and suspend after 15
-exec --no-startup-id xautolock -time 10 -locker 'betterlockscreen --lock' &
-#exec xautolock -detectsleep   -time 10 -locker "betterlockscreen" \
-#  -notify 30 \
-#  -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
-
-# Force rescale window for 4k display
-exec --no-startup-id xrandr --output eDP1 --scale 1x1
-exec --no-startup-id xrandr --output eDP1 --mode 2560x1440
-
-
-# Startup the polybar
-exec_always --no-startup-id killall polybar; polybar main -c "/home/akhil/.config/i3/polybar"
-bindsym F7 exec  if  ! pkill -c polybar ; then polybar main -c "/home/akhil/.config/i3/polybar"; fi  
-
-# Notifications 
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-
-# Add input gestures 
+# Add input gestures
 exec --no-startup-id libinput-gestures-setup start
 # guake dropw down terminal
-exec guake 
+exec guake
 
-# Turn on tap to click
-exec xinput set-prop 12 285 1
-
-#exec --no-startup-id /usr/lib/kdeconnectd 
 exec --no-startup-id dropbox
-
 
 ## Plasma Integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-
 exec --no-startup-id wmctrl -c Plasma
-
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
-
-
-
 ## Avoid tiling popups, dropdown windows from plasma
 
-# for the first time, manually resize them, i3 will remember the setting for floating windows
-
+# for the first time, manually resize them, i3 wll remember the setting for floating windows
 for_window [class="plasmashell"] floating enable;
-
 for_window [class="Plasma"] floating enable; border none
-
 for_window [title="plasma-desktop"] floating enable; border none
-
 for_window [title="win7"] floating enable; border none
-
 for_window [class="krunner"] floating enable; border none
-
 for_window [class="Kmix"] floating enable; border none
-
 for_window [class="Klipper"] floating enable; border none
-
 for_window [class="Plasmoidviewer"] floating enable; border none
-
+for_window [class="Konsole"] border enable;
 
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart
