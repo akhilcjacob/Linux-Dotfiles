@@ -1,25 +1,25 @@
 # Dotfiles 
-Arch linux minimal setup files - config files, etc.
+configuration files for KDE Plamsa 5.13 with i3-gaps wm
 <br>
-Used:
-<br>
-* i3-gaps wm
-* i3lock
-* rofi
-* lemonbar
 
-## File Structure ##
-├── compton.conf <br>
-├── dotfiles <br>
-│   ├── 465311.jpg <br>
-│   ├── compton.conf <br>
-│   ├── i3 <br>
-│   │   └── config <br>
-│   ├── lemonbar <br>
-│   │   └── clock.sh <br>
-│   ├── README.md <br>
-│   ├── rofi <br>
-│   │   └── config <br>
+## Auto Install Script
+
+Very basic script that copies over zsh and i3 files. It's not very smart and will write over any exisiting files.
+
+	./auto_install.sh
+
+## Basic File Structure
+
+├── .config
+│   ├── i3
+│   │   ├── compton.conf
+│   │   ├── config
+│   │   ├── i3notefocus.sh
+│   │   ├── old_bars
+│   │   └── polybar
+│   ├── plasma-workspace
+│   │   └── env
+
 
 ## Screen shots ##
 
@@ -33,5 +33,5 @@ Used:
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/rofi.png)
 
 #### Fake Busy ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/terminal_chrome.png)
+![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/code_chrome.png)
 
