@@ -1,5 +1,4 @@
-rm -rf compton.conf i3 rofi .zshrc userChrome.css
-cp -r ~/.config/rofi .
+rm -rf compton.conf i3 rofi .zshrc
 cp -r ~/.config/i3 .
 cp ~/.zshrc .
-cp -r ~/.zsh/plugins .
+cp -r ~/.zsh/plugins zsh-plugins
