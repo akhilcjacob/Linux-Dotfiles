@@ -1,5 +1,5 @@
 # Dotfiles 
-configuration files for KDE Plamsa 5.13 with i3-gaps wm
+Configuration files for KDE Plamsa 5.13 with i3-gaps wm
 <br>
 
 ## Auto Install Script
@@ -9,7 +9,7 @@ Very basic script that copies over zsh and i3 files. It's not very smart and wil
 	./auto_install.sh
 
 ## Basic File Structure
-
+```
 ├── .config
 │   ├── i3
 │   │   ├── compton.conf
@@ -19,7 +19,7 @@ Very basic script that copies over zsh and i3 files. It's not very smart and wil
 │   │   └── polybar
 │   ├── plasma-workspace
 │   │   └── env
-
+```
 
 ## Screen shots ##
 
