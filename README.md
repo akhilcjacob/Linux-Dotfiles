@@ -1,6 +1,12 @@
 # Dotfiles 
 Configuration files for KDE Plamsa 5.13 with i3-gaps wm
 <br>
+**KDE Configuration**:
+
++ Workspace Theme: Arc Dark
++ Desktop Theme: Arc Dark Transparent
++ GTK Theme: Arc Dark
++ Icons: Papirus-Dark
 
 ## Auto Install Script
 
