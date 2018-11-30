@@ -1,6 +1,12 @@
 # Dotfiles 
 Configuration files for KDE Plamsa 5.13 with i3-gaps wm
 <br>
+**KDE Configuration**:
+
++ Workspace Theme: Arc Dark
++ Desktop Theme: Arc Dark Transparent
++ GTK Theme: Arc Dark
++ Icons: Papirus-Dark
 
 ## Auto Install Script
 
@@ -28,9 +34,6 @@ Very basic script that copies over zsh and i3 files. It's not very smart and wil
 
 #### Home Screen ####
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/only_terminal.png)
-
-#### Rofi ####
-![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/rofi.png)
 
 #### Fake Busy ####
 ![alt text](https://github.com/akhilcjacob/dotfiles/blob/master/images/code_chrome.png)
