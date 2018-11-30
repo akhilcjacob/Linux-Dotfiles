@@ -3,4 +3,5 @@ cp -r ~/.config/i3 .
 cp ~/.zshrc .
 cp -r ~/.zsh/plugins zsh-plugins
 cp -r ~/.config/plasma-workspace .
+cp ~/.config/compton.conf .
 

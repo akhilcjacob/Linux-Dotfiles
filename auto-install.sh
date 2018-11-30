@@ -48,5 +48,17 @@ echo "This will override any existing zsh directories. Please be sure this is wh
 read -p "Are you sure? (y/n) " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-mv i3 .config
+mv i3 ~/.config/
+fi
+
+echo ""
+echo ""
+# This is for the i3 setup ( Setup for i3 wm - please look at .config/i3/config for keybindings)
+echo "Installing i3 wm Files"
+echo "======================"
+echo "This will override any existing compton files. Please be sure this is what you want!!"
+read -p "Are you sure? (y/n) " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+mv compton.conf ~/.config/
 fi

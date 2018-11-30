@@ -58,7 +58,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 # bindsym $mod+d exec rofi -show drun -width 2560 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
-bindsym mod4+d exec rofi -show drun -height 1000
+# bindsym mod4+d exec rofi -show drun -height 1000
 
 # change focus
 bindsym $mod+j focus left
@@ -205,8 +205,8 @@ bindsym $mod+c move absolute position center
 #bindsym XF86AudioPrev exec playerctl previous
 
 # i3-gaps : window gaps
-gaps inner 3
-gaps outer 3
+gaps inner 6
+gaps outer 4
 
 # Gaps & borders only when we have more than 1 window
 smart_borders on
@@ -235,13 +235,13 @@ smart_borders on
 exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
 
 # Remove the ugly title bars and borders
-new_window 1pixel
-for_window [class=".*"] border pixel 2
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#new_window 1pixel
+for_window [class=".*"] border pixel 0
+client.focused          #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
 
 # Use a fancy color scheme
-exec compton 
+exec compton
 
 # Add input gestures
 exec --no-startup-id libinput-gestures-setup start
@@ -267,6 +267,9 @@ for_window [class="Kmix"] floating enable; border none
 for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="Konsole"] border enable;
+
+exec modprobe -vv nvidia
+exec libinput-gestures-setup start
 
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart

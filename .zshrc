@@ -3,9 +3,10 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=/home/akhil/flutter/bin:$PATH
 export PATH=/home/akhil/.gem/ruby/2.5.0/bin:$PATH
 export PATH=/usr/bin/node:$PATH
-export JAVA_HOME=/usr/lib/jvm/default:$PATH
+export JAVA_HOME=/usr/lib/jvm/default
 export TERM=konsole
 export NODE_ENV=development 
+export PATH=/home/akhil/Developmemt/Libraries/flutter/bin:$PATH  
 
 ### Set/unset ZSH options
 #########################
@@ -198,6 +199,7 @@ function precmd() {
 ##################
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
  
 cd ~
