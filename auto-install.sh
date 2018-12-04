@@ -12,6 +12,7 @@ then
 
 cp .zshrc ~/
 echo "Making a plugin directory within the ~/.zsh folder..."
+mkdir ~/.zsh/
 mkdir ~/.zsh/plugins
 
 echo "Copying over syntax highlight and autosuggestion plugin..."
@@ -54,7 +55,7 @@ fi
 echo ""
 echo ""
 # This is for the i3 setup ( Setup for i3 wm - please look at .config/i3/config for keybindings)
-echo "Installing i3 wm Files"
+echo "Installing compton  Files"
 echo "======================"
 echo "This will override any existing compton files. Please be sure this is what you want!!"
 read -p "Are you sure? (y/n) " -n 1 -r
