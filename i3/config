@@ -21,15 +21,16 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+n scratchpad show
 
 # Show open Browsers
- bindsym $mod+Return exec --no-startup-id google-chrome-stable
+bindsym $mod+Return exec --no-startup-id google-chrome-stable
+# bindsym $mod+Return exec --no-startup-id brave
 
 # Brwoser pop-up as floating
 for_window [window_role="pop-up"] floating enable
 
 # launch file manager
 bindsym $mod+Shift+f exec pantheon-files -n
-for_window [class="Pantheon-files"] floating enable
-for_window [class="Pantheon-files"] resize set 900 600
+for_window [class="dolphin"] floating enable
+for_window [class="dolphin"] resize set 1300 900
 
 # Force float certain applications (ie. photo viewer)
 for_window [class="guake"] floating enable
@@ -48,8 +49,8 @@ for_window [class="Pantheon-photos"] resize set 900 600
 # Launch script => script launches app and if already opened refoucses to it
 # bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote
 bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh boostnote
-bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh keeweb
-bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh keeweb
+bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh KeeWeb
+bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh KeeWeb
 # Show the floating terminal
 bindsym $mod+t exec guake
 
@@ -123,7 +124,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 wodrkspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -241,7 +242,7 @@ client.focused          #4c7899 #285577 #ffffff #2e9ef4 #285577
 client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
 
 # Use a fancy color scheme
-exec compton
+exec compton -b
 
 # Add input gestures
 exec --no-startup-id libinput-gestures-setup start
@@ -271,7 +272,9 @@ for_window [class="Konsole"] border enable;
 exec modprobe -vv nvidia
 exec libinput-gestures-setup start
 
+#bindcode 133  exec guake
+
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart
-
+ 
 

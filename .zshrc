@@ -81,6 +81,10 @@ alias ls='ls --color=auto '
 alias diff='diff --color=auto '
 alias firefox='env GTK_THEME=Adwaita:light firefox'
 alias xclip="xclip -selection c"
+alias package-install='pikaur -Sy --noconfirm --noedit'
+alias update-all='pikaur -Syu --noconfirm --noedit'
+alias package-uninstall='pikaur -Rsnvc'
+alias file-manager='(dolphin .; disown %dolphin)& '
 
 # cd jump (Move up several directories) 
 # usage 
