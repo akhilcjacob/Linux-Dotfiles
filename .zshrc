@@ -1,3 +1,4 @@
+#unsetopt BASH_AUTO_LIST
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=/home/akhil/flutter/bin:$PATH
@@ -22,7 +23,7 @@ unsetopt BG_NICE
 setopt CORRECT
 setopt EXTENDED_HISTORY
 # setopt HASH_CMDS
-setopt MENUCOMPLETE
+#setopt MENUCOMPLETE
 setopt ALL_EXPORT
 setopt bash_auto_list
 setopt listambiguous
@@ -54,7 +55,7 @@ SAVEHIST=1000
 HOSTNAME="`hostname`"
 LS_COLORS='rs=0:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:';
 
-### Load colors
+### The Load colors
 ###############
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -72,7 +73,6 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 #PS1="%(!.${PR_RED}%n.$PR_LIGHT_YELLOW%n)%(!.${PR_LIGHT_YELLOW}@.$PR_RED@)$PR_NO_COLOR%(!.${PR_LIGHT_RED}%U%m%u.${PR_BLUE}%U%m%u)$PR_NO_COLOR:%(!.${PR_RED}%2c.${PR_BLUE}%2c)$PR_NO_COLOR%(!.${PR_LIGHT_RED}#.${PR_LIGHT_GREEN}$) "
 PS1="%{${PR_LIGHT_GREEN}%}%~ ${PR_BLUE}%2}➔ "
 unsetopt ALL_EXPORT
-
 ### Set alias
 #############
 alias ll='ls -al'
@@ -85,6 +85,12 @@ alias package-install='pikaur -Sy --noconfirm --noedit'
 alias update-all='pikaur -Syu --noconfirm --noedit'
 alias package-uninstall='pikaur -Rsnvc'
 alias file-manager='(dolphin .; disown %dolphin)& '
+
+function lazygit() {
+    git add .
+    git commit -a -m "$1"
+    git push
+}
 
 # cd jump (Move up several directories) 
 # usage 
@@ -123,7 +129,6 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 
 # list of completers to use
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-
 # allow one error for every three characters typed in approximate completer
 zstyle -e ':completion:*:approximate:*' max-errors \
     'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
@@ -206,7 +211,7 @@ source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_HIGHLIGHT_STYLES[path]='fg=white,bold'
  
-cd ~
+#cd ~
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 

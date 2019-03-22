@@ -1,5 +1,4 @@
 # i3 config file (v4
-
 # Setting mod to ALT (left & right) key
 set $mod Mod1
 
@@ -12,7 +11,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Shift+Return exec konsole
-for_window [class="konsole"] resize set 900 600
+#for_window [class="konsole"] resize set 900 600
 
 # Make the currently focused window a scratchpad
 bindsym $mod+minus move scratchpad
@@ -21,7 +20,9 @@ bindsym $mod+minus move scratchpad
 bindsym $mod+n scratchpad show
 
 # Show open Browsers
-bindsym $mod+Return exec --no-startup-id google-chrome-stable
+#bindsym $mod+Return exec --no-startup-id google-chrome-stable
+bindsym $mod+Return exec --no-startup-id  GTK_THEME=Adwaita firefox
+bindsym $mod+o exec --no-startup-id  GTK_THEME=Adwaita optirun firefox
 # bindsym $mod+Return exec --no-startup-id brave
 
 # Brwoser pop-up as floating
@@ -34,6 +35,10 @@ for_window [class="dolphin"] resize set 1300 900
 
 # Force float certain applications (ie. photo viewer)
 for_window [class="guake"] floating enable
+for_window [class="lattedock"] floating enable
+for_window [class="konsole"] floating enable
+for_window [class="konsole"] resize set 1200 800
+for_window [class="konsole"] move absolute position center
 for_window [class="Trello"] floating enable
 for_window [class="Trello"] resize set 1200 800
 for_window [class="Gnome-calculator"] floating enable
@@ -47,12 +52,12 @@ for_window [class="Pantheon-photos"] floating enable
 for_window [class="Pantheon-photos"] resize set 900 600
 
 # Launch script => script launches app and if already opened refoucses to it
-# bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh boostnote
-bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh boostnote
-bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh KeeWeb
+#bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh typora
+bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh typora
+#bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh KeeWeb
 bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh KeeWeb
 # Show the floating terminal
-# bindsym $mod+t exec guake
+bindsym $mod+t exec guake -t
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -100,10 +105,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle, resize set 1200 800
-
-# change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+space floating toggle, resize set 1500 900
+bindsym $mod+Shift+space exec "i3-msg floating enable && i3-msg resize set 2500 1700 && i3-msg move absolute position center"
 
 # Smart popup focus
 popup_during_fullscreen smart
@@ -155,10 +158,10 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         #Resize the window
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -206,11 +209,11 @@ bindsym $mod+c move absolute position center
 #bindsym XF86AudioPrev exec playerctl previous
 
 # i3-gaps : window gaps
-gaps inner 6
-gaps outer 4
+gaps inner 15
+gaps outer 6
 
 # Gaps & borders only when we have more than 1 window
-smart_borders on
+# smart_borders on
 
 #=============== Commented out i3 bar ==============#
 #bar {
@@ -262,6 +265,7 @@ no_focus [class=”plasmashell”]
 
 # for the first time, manually resize them, i3 wll remember the setting for floating windows
 for_window [class="plasmashell"] floating enable;
+for_window [class="python"] floating enable;
 for_window [class="Plasma"] floating enable; border none
 for_window [title="plasma-desktop"] floating enable; border none
 for_window [title="win7"] floating enable; border none
