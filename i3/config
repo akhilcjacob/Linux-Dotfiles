@@ -1,5 +1,6 @@
 # i3 config file (v4
 # Setting mod to ALT (left & right) key
+#set $mod Mod1
 set $mod Mod1
 
 # Default font set
@@ -57,14 +58,14 @@ bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh typora
 #bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh KeeWeb
 bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh KeeWeb
 # Show the floating terminal
-bindsym $mod+t exec guake -t
+bindsym $mod+t exec --no-startup-id guake -t
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-# bindsym $mod+d exec rofi -show drun -width 2560 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
-# bindsym mod4+d exec rofi -show drun -height 1000
+#bindsym $mod+d exec rofi -show drun -width 3000 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
+# bindsym $mod+d exec rofi -show drun -height 1000
 
 # change focus
 bindsym $mod+j focus left
@@ -209,8 +210,8 @@ bindsym $mod+c move absolute position center
 #bindsym XF86AudioPrev exec playerctl previous
 
 # i3-gaps : window gaps
-gaps inner 15
-gaps outer 6
+gaps inner 12
+gaps outer 0
 
 # Gaps & borders only when we have more than 1 window
 # smart_borders on
@@ -280,8 +281,9 @@ exec libinput-gestures-setup start
 
 #bindcode 133  exec guake
 
-exec --no-startup-id flashfocus
-bindsym $mod+shift+n exec --no-startup-id flash_window
+#exec --no-startup-id flashfocus
+#bindsym $mod+shift+n exec --no-startup-id flash_window
+
 
 #restart i3 in place to kick off new settings
 exec --no-startup-id restart
