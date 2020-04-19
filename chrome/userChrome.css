@@ -6,7 +6,7 @@ html#main-window {
 	--margin-after-tab-list: 8x;
 	--margin-before-tab-list: 5px;
 	--tab-font: "Cantarell", sans-serif;
-	--tab-font-weight: 700;
+	--tab-font-weight: 300;
 	--tab-height: 24px;
 	--tabs-container-height: 80px;
 
@@ -14,10 +14,10 @@ html#main-window {
 	--urlbar-list-width: 60%;
 	--urlbar-text-font: "mononoki Nerd Font", sans-serif;
 	--urlbar-text-size: 10pt;
-	--urlbar-text-weight: 700;
+	--urlbar-text-weight: 200;
 	--urlbar-height: 40px;
 	/* Firefox variables */
-	--lwt-toolbar-field-focus-color: #2185ff !important;
+	--lwt-toolbar-field-focus-color: #fefefa !important;
 	--lwt-toolbar-field-color: #fefefa !important;
 	--lwt-toolbar-field-background-color: var(--color-bg) !important;
 
