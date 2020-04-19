@@ -71,7 +71,7 @@ done
 ##############
 PR_NO_COLOR="%{$terminfo[sgr0]%}"
 #PS1="%(!.${PR_RED}%n.$PR_LIGHT_YELLOW%n)%(!.${PR_LIGHT_YELLOW}@.$PR_RED@)$PR_NO_COLOR%(!.${PR_LIGHT_RED}%U%m%u.${PR_BLUE}%U%m%u)$PR_NO_COLOR:%(!.${PR_RED}%2c.${PR_BLUE}%2c)$PR_NO_COLOR%(!.${PR_LIGHT_RED}#.${PR_LIGHT_GREEN}$) "
-PS1="%{${PR_LIGHT_GREEN}%}%~ ${PR_BLUE}%2}➔ "
+PS1="%{${PR_LIGHT_GREEN}%}%~ ${PR_BLUE}%2}> "
 unsetopt ALL_EXPORT
 ### Set alias
 #############
