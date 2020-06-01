@@ -1,0 +1,292 @@
+# i3 config file (v4
+# Setting mod to ALT (left & right) key
+#set $mod Mod1
+set $mod Mod1
+
+# Default font set
+#font pango:DejaVu Sans Mono 12
+font pango:DejaVu Sans Mono 12
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Shift+Return exec konsole
+#for_window [class="konsole"] resize set 900 600
+
+# Make the currently focused window a scratchpad
+bindsym $mod+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+n scratchpad show
+
+# Show open Browsers
+#bindsym $mod+Return exec --no-startup-id google-chrome-stable
+bindsym $mod+Return exec --no-startup-id  GTK_THEME=Adwaita firefox
+bindsym $mod+o exec --no-startup-id  GTK_THEME=Adwaita optirun firefox
+# bindsym $mod+Return exec --no-startup-id brave
+
+# Brwoser pop-up as floating
+for_window [window_role="pop-up"] floating enable
+
+# launch file manager
+bindsym $mod+Shift+f exec pantheon-files -n
+for_window [class="dolphin"] floating enable
+for_window [class="dolphin"] resize set 1300 900
+
+# Force float certain applications (ie. photo viewer)
+for_window [class="guake"] floating enable
+for_window [class="lattedock"] floating enable
+#for_window [class="konsole"] floating enable
+for_window [class="konsole"] resize set 1200 800
+for_window [class="konsole"] move absolute position center
+for_window [class="Trello"] floating enable
+for_window [class="Trello"] resize set 1200 800
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="KeeWeb"] floating enable
+for_window [class="KeePassXC"] floating enable
+for_window [class="ghostwriter"] floating enable
+for_window [class="ghostwriter"] resize set 1000 800
+for_window [class="Slack"] floating enable
+for_window [class="Slack"] resize set 1200 800
+for_window [class="Pantheon-photos"] floating enable
+for_window [class="Pantheon-photos"] resize set 900 600
+
+# Launch script => script launches app and if already opened refoucses to it
+#bindsym $mod+Shift+t exec /home/akhil/.config/i3/i3notefocus.sh typora
+bindsym $mod+g exec /home/akhil/.config/i3/i3notefocus.sh typora
+#bindsym $mod+Shift+w exec /home/akhil/.config/i3/i3notefocus.sh KeeWeb
+bindsym exec --no-startup-id /home/akhil/.config/i3/i3notefocus.sh KeeWeb
+# Show the floating terminal
+bindsym $mod+t exec --no-startup-id guake -t
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start rofi (a program launcher)
+#bindsym $mod+d exec rofi -show drun -width 3000 -padding 770 -line-margin 10 -auto-select -opacity 0 -fake-transparency
+# bindsym $mod+d exec rofi -show drun -height 1000
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle, resize set 1500 900
+bindsym $mod+Shift+space exec "i3-msg floating enable && i3-msg resize set 2500 1700 && i3-msg move absolute position center"
+
+# Smart popup focus
+popup_during_fullscreen smart
+
+# focus the parent container
+bindsym $mod+Shift+a focus parent
+
+# focus the child container
+#bindsym $mod+Shift+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Workspace manipulation
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        #Resize the window
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Similar binding except with alt to resize with larger values
+	bindsym $mod+Left resize shrink width 100 px or 100 ppt
+        bindsym $mod+Down resize grow height 100 px or 100 ppt
+        bindsym $mod+Up resize shrink height 100 px or 100 ppt
+        bindsym $mod+Right resize grow width 100 px or 100 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Trigger resize mode
+bindsym $mod+r mode "resize"
+
+# Move a window to the center (Only works on floating windows)
+bindsym $mod+c move absolute position center
+
+# Pulse Audio controls
+#increase sound volume
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+#decrease sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -6%
+# mute sound
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Sreen brightness controls
+# increase screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+# decrease screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
+# Touchpad controls
+#bindsym XF86TouchpadToggle exec ~/.i3/toggletouchpad.sh # toggle touchpad
+
+# Media player controls
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+
+# i3-gaps : window gaps
+gaps inner 12
+gaps outer 0
+
+# Gaps & borders only when we have more than 1 window
+# smart_borders on
+
+#=============== Commented out i3 bar ==============#
+#bar {
+#    status_command conky -c $HOME/.config/i3/conkyrc
+#    mode dock
+#    position bottom
+#    font pango:open sans 7.8
+#    strip_workspace_numbers yes
+#colors {
+#    background #14243d
+#    statusline #FFFFFF
+##    separator #14243d
+
+#    focused_workspace #14243d #14243d #FFFFFF
+#    active_workspace  #14243d #14243d #4FC0E8
+#    inactive_workspace #14243d #14243d #777777
+#    urgent_workspace  #af0a36 #14243d #C1D1E0
+#  }
+#}
+#====================================================#
+
+# Set wallpaper (need to install feh)
+exec_always feh --bg-scale /home/akhil/Pictures/desktop_background.jpg
+
+# Remove the ugly title bars and borders
+#new_window 1pixel
+for_window [class=".*"] border pixel 0
+hide_edge_borders smart
+client.focused          #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+
+# Use a fancy color scheme
+#exec_always compton -b
+exec picom -b
+
+# Add input gestures
+exec --no-startup-id libinput-gestures-setup start
+
+# guake dropw down terminal
+exec guake
+
+exec --no-startup-id dropbox
+
+## Plasma Integration
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+## Avoid tiling popups, dropdown windows from plasma
+no_focus [class=”plasmashell”]
+
+# for the first time, manually resize them, i3 wll remember the setting for floating windows
+for_window [class="plasmashell"] floating enable;
+for_window [class="python"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="Konsole"] border enable;
+
+exec modprobe -vv nvidia
+exec libinput-gestures-setup start
+
+#bindcode 133  exec guake
+
+#exec --no-startup-id flashfocus
+#bindsym $mod+shift+n exec --no-startup-id flash_window
+
+
+#restart i3 in place to kick off new settings
+exec --no-startup-id restart
+ 
+
